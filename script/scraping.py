@@ -35,6 +35,9 @@ with open(output_filename, 'a', encoding='utf-8') as csv_file:
             text_reviews_count = int(book['text_reviews_count']) if book['text_reviews_count'].isdigit() else None
             ratings_count = int(book['ratings_count']) if book['ratings_count'].isdigit() else None
 
+            # Count the number of authors
+            authors_count = authors.count(",") + 1
+
             # Write the data to the CSV file
-            df = pd.DataFrame([[isbn, isbn13, title, num_pages, authors, publisher, publication_date, publication_year, publication_month, publication_day, country_code, language_code, average_rating, text_reviews_count, ratings_count]], columns=column_names)
-            df.to_csv(csv_file, header=False, index=False, encoding='utf-8', line_terminator='\n')
+            df = pd.DataFrame([[title, num_pages, authors, publisher, publication_date, publication_year, publication_month, publication_day, country_code, language_code, average_rating, text_reviews_count, ratings_count, authors_count]], columns=column_names + ['authors_count'])
+            df.to_csv(csv_file, header=False, index=False, encoding='utf-8')
