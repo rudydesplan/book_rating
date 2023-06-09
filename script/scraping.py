@@ -5,7 +5,7 @@ filename = "goodreads_books.json"
 output_filename = "goodreads_books.csv"
 
 # Define the column names
-column_names = ['isbn','isbn13','title', 'num_pages', 'authors', 'publisher', 'publication_date', 'publication_year', 'publication_month', 'publication_day', 'country_code', 'language_code', 'average_rating', 'text_reviews_count', 'ratings_count']
+column_names = ['book_id','isbn','isbn13','title', 'num_pages', 'authors', 'publisher', 'publication_date', 'publication_year', 'publication_month', 'publication_day', 'country_code', 'language_code', 'average_rating', 'text_reviews_count', 'ratings_count']
 
 # Open the CSV file in write mode
 with open(output_filename, 'w') as csv_file:
@@ -18,6 +18,7 @@ with open(output_filename, 'a', encoding='utf-8') as csv_file:
     with open(filename, 'r', encoding='utf-8') as f:
         for line in f:
             book = json.loads(line)
+            book_id = int(book['book_id']) if book['book_id'].isdigit() else None
             isbn = int(book['isbn']) if book['isbn'].isdigit() else None
             isbn13 = int(book['isbn13']) if book['isbn13'].isdigit() else None
             title = book['title']
@@ -36,5 +37,5 @@ with open(output_filename, 'a', encoding='utf-8') as csv_file:
             ratings_count = int(book['ratings_count']) if book['ratings_count'].isdigit() else None
 
             # Write the data to the CSV file
-            df = pd.DataFrame([[isbn,isbn13,title, num_pages, authors, publisher, publication_date, publication_year, publication_month, publication_day, country_code, language_code, average_rating, text_reviews_count, ratings_count]], columns=column_names)
+            df = pd.DataFrame([[book_id,isbn,isbn13,title, num_pages, authors, publisher, publication_date, publication_year, publication_month, publication_day, country_code, language_code, average_rating, text_reviews_count, ratings_count]], columns=column_names)
             df.to_csv(csv_file, header=False, index=False, encoding='utf-8' , sep='|')
