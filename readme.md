@@ -19,3 +19,12 @@ You can use requirements.txt to create env (with venv or poetry)
 * ``feature_engineering_and_models.ipynb`` : Feature engineering from creating new colomns, modify existing one for fitting in models and trying some models
 
 * ``project.ipynb`` : First notebook of the project, doomed to disappear
+
+# Data folder 
+
+* ``book_rate.csv`` : Dataframe for training Azure autoML
+* ``books.csv`` : Original data corrected
+* ``tags_reduced.csv`` :
+* ``tags.csv`` :
+* ``works.csv`` :
+
