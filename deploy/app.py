@@ -5,7 +5,7 @@ import xgboost as xgb
 import tempfile
 
 # Fetch the model from GitHub
-response = requests.get('https://github.com/rudydesplan/book_rating/blob/main/model/xgb_jsonFormat.json')
+response = requests.get('https://raw.githubusercontent.com/rudydesplan/book_rating/main/model/xgb_jsonFormat.json')
 response.raise_for_status()  # Raise an exception for HTTP errors
 
 # Create a temporary file to store the model
