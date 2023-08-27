@@ -32,6 +32,7 @@ This part regroups:
 * Data cleaning
 * Exploratory Data Analysis (EDA)
 * Feature Engineering
+
 and is achieved through ``data_preprocessing.ipynb``.
 
 The preprocessed data is then saved into ``books_preprocessed.csv`` inside the ``data_preprocessed`` folder.
