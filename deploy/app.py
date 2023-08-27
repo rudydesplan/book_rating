@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 import xgboost as xgb
 import tempfile
-from preprocessing import preprocess_data
 
 # Fetch the model from GitHub
 response = requests.get('https://github.com/rudydesplan/book_rating/blob/main/model/xgb_model.json')
