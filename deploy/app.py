@@ -12,10 +12,10 @@ response.raise_for_status()  # Raise an exception for HTTP errors
 with tempfile.NamedTemporaryFile(delete=False, suffix='.json') as temp:
     temp.write(response.content)
     temp_filename = temp.name
-    
-# Load the XGBoost model from the temporary file using pickle
-with open(temp_filename, 'rb') as model_file:
-    model = pickle.load(model_file)
+
+# Load the XGBoost model from the temporary file
+model = xgb.Booster()
+model.load_model(temp_filename)
 
 def make_predictions(df):
     return model.predict(xgb.DMatrix(df))
