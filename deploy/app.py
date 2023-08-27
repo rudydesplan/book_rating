@@ -3,17 +3,16 @@ import pandas as pd
 import requests
 import xgboost as xgb
 import tempfile
-import pickle
 
 # Fetch the model from GitHub
-response = requests.get('https://github.com/rudydesplan/book_rating/blob/main/model/xgb_model.pkl')
+response = requests.get('https://github.com/rudydesplan/book_rating/blob/main/model/xgb_model.json')
 response.raise_for_status()  # Raise an exception for HTTP errors
 
 # Create a temporary file to store the model
-with tempfile.NamedTemporaryFile(delete=False, suffix='.pkl') as temp:
+with tempfile.NamedTemporaryFile(delete=False, suffix='.json') as temp:
     temp.write(response.content)
     temp_filename = temp.name
-
+    
 # Load the XGBoost model from the temporary file using pickle
 with open(temp_filename, 'rb') as model_file:
     model = pickle.load(model_file)
