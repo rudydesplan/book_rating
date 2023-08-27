@@ -15,7 +15,7 @@ with tempfile.NamedTemporaryFile(delete=False, suffix='.json') as temp:
 
 # Load the XGBoost model from the temporary file
 model = xgb.Booster()
-model.load_model(temp_filename, model_format='json')
+model.load_model(temp_filename)
 
 def make_predictions(df):
     return model.predict(xgb.DMatrix(df))
